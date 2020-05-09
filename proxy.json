@@ -1,0 +1,8 @@
+{
+  "/api/*": {
+      "target": "https://shareit-restapi.herokuapp.com/",
+      "secure": "false",
+      "changeOrigin": true,
+      "logLevel": "debug"
+  }
+}

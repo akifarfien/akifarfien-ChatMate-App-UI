@@ -1,0 +1,24 @@
+<div id="form-main">
+  <div id="form-div">
+    <form class="form" id="form1">
+
+      <div *ngIf="!chatId">
+        <input type="text" placeholder="Enter chat id" #inputid>
+        <button (click)="startChat(inputid.value)">Start Chat</button>
+      </div>
+      <span style="color: white;" *ngIf="chatId"> connectionId : {{chatId}}</span>
+      <button *ngIf="chatId" (click)="endChat()">End Chat</button>
+      <div class="text">
+        <div class="feedback-input">
+          <p *ngFor="let chat of chatData">{{chat}}</p>
+        </div>
+      </div>
+
+      <div class="submit">
+        <input id="input-box" type="text" [(ngModel)]="chatContent" [ngModelOptions]="{standalone: true}">
+        <button type="submit" id="button-blue" (click)="sendMessage()">SEND</button>
+        <div class="ease"></div>
+      </div>
+
+    </form>
+  </div>
