@@ -1,9 +1,12 @@
 # U R L
+Hit this app from here
 
-https://akifarfien.github.io/ChatMate-App-UI/
+https://stormy-tor-98683.herokuapp.com/
+
+# first hit will take some time.
+
 
 # ShareitUi
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.0.
 
 ## Development server
