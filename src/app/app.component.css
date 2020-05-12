@@ -1,19 +1,23 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-
-html{    background:url(http://thekitemap.com/images/feedback-img.jpg) no-repeat;
-  background-size: cover;
-  height:100%;
-}
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital@1&display=swap');
 
 #feedback-page{
 	text-align:center;
 }
-
-#form-main{
-	width:100%;
-	float:left;
-	padding-top:0px;
+.container{
+  padding: 11px;
 }
+.size{
+  width: 50% !important;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+.align{
+  margin-left: 104px;
+}
+
 
 #form-div {
 	background-color:rgba(72,72,72,0.4);
@@ -24,8 +28,8 @@ html{    background:url(http://thekitemap.com/images/feedback-img.jpg) no-repeat
 	width: 450px;
 	float: left;
 	left: 50%;
-	position: absolute;
   margin-top:30px;
+  position: relative;
 	margin-left: -260px;
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
@@ -33,22 +37,29 @@ html{    background:url(http://thekitemap.com/images/feedback-img.jpg) no-repeat
 
 .feedback-input {
 	color:#3c3c3c;
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: 'Dosis';
   font-weight:500;
 	font-size: 18px;
-	border-radius: 0;
-	line-height: 22px;
+  border-radius: 15px;
+  line-height: 22px;
+  border: 1px solid black;
 	background-color: #fbfbfb;
 	padding: 13px 13px 13px 54px;
   margin: 10px;
-  height: 300px;
+  height: 400px;
   overflow-y: auto;
 	width:100%;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	box-sizing: border-box;
-  border: 3px solid rgba(0,0,0,0);
+}
+
+.feedback-input .chatter-name{
+  font-family: 'Pangolin', cursive;
+  padding-right: 5px;
+  font-size: 15px;
+  color: #1594e9;
 }
 
 .feedback-input:focus{
@@ -65,14 +76,11 @@ html{    background:url(http://thekitemap.com/images/feedback-img.jpg) no-repeat
 	border:#30aed6 solid 3px;
 }
 
-#comment{
-	background-size: 30px 30px;
-	background-position: 11px 8px;
-	background-repeat: no-repeat;
-}
+
 
 textarea {
     width: 100%;
+    border-radius: 5px;
     height: 350px;
     line-height: 150%;
     resize:vertical;
@@ -86,7 +94,7 @@ input:focus, textarea:focus {
 #input-box{
 	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 	float:left;
-	width: 90%;
+	width: 80%;
 	border: #fbfbfb solid 4px;
 	cursor:pointer;
 	color:black;
@@ -116,6 +124,20 @@ input:focus, textarea:focus {
   font-weight:700;
 }
 
+.adjustment{
+  padding-left: 15px;
+  padding-top: 15px;
+}
+
+.connectionIdFont{
+  font-family: 'DM Mono', monospace;
+  font-size: medium;
+}
+
+.todo{
+  margin-left: 100px;
+    margin-bottom: 20px;
+}
 
 
 @media only screen and (max-width: 580px) {

@@ -1,74 +1,85 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { ChatService } from 'src/services/chat.service';
+import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
+import { ChatService } from "src/services/chat.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements OnInit {
-  title = 'shareit-ui';
-  chatContent = '';
+  title = "shareit-ui";
+  chatContent = "";
   chatId: string;
-  chatData =[]
+  chatData = [];
   connectionId: string;
+  name: string;
+  exception : string;
 
 
-
-  constructor(private chatservice: ChatService) { }
+  constructor(private chatservice: ChatService) {}
 
   ngOnInit() {
     this.updateChat();
   }
 
-  updateChat(){
-    setInterval(()=>{
-      if(this.chatId){
+  updateChat() {
+    setInterval(() => {
+      if (this.chatId) {
         this.chatservice.getChatData(this.chatId).subscribe((res: any) => {
-          this.chatData= [...res.contentList] ;
-        })
+          this.chatData = [...res.contentList];
+        });
       }
-    },1000);
+    }, 1000);
   }
-
+  chat(event) {
+    console.log(event);
+  }
   sendMessage() {
-
     if (this.chatId) {
       const payload = {
         uniqueCodeUrl: this.chatId,
-        lastcontent: this.chatContent
+        lastcontent: this.chatContent,
+        name: this.name,
+
       };
 
       this.chatservice.putChatData(payload).subscribe((res: any) => {
-        this.chatData=[...res.contentList] ;
+        this.chatData = [...res.contentList];
       });
-      this.chatContent = '';
-    }
-    else {
+      this.chatContent = "";
+    } else {
       const payload = {
-        lastcontent: this.chatContent
+        lastcontent: this.chatContent,
+        name: this.name,
       };
       this.chatservice.postChatData(payload).subscribe((res: any) => {
         this.chatId = res.uniqueCodeUrl;
-        this.chatData=[...res.contentList] ;
+        this.chatData = [...res.contentList];
       });
-      this.chatContent = '';
+      this.chatContent = "";
     }
   }
 
   startChat(id) {
-    this.chatId=id;
+    this.chatId = id;
     if (this.chatId) {
       this.chatservice.getChatData(this.chatId).subscribe((res: any) => {
         this.chatId = res.uniqueCodeUrl;
-        this.chatData=[...res.contentList] ;
+        this.chatData = [...res.contentList];
+      },(error) => {
+        console.log(error);
+        this.exception = error.message;
       });
     }
   }
 
-  endChat(){
-    this.chatId=null;
-    this.chatData=[];
-    this.chatContent='';
+  setName(name){
+this.name = name;
+  }
+
+  endChat() {
+    this.chatId = null;
+    this.chatData = [];
+    this.chatContent = "";
   }
 }

@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.header-custom{
+  font-family: 'Press Start 2P', cursive;
+padding-left: 35px;
+  color: white;
+  padding-top: 8px;
+  padding-bottom: 2px ;
+
+}
+
+.headertext{
+  color: white;
+  float: right;
+  padding-right: 7px;
+  padding-top: 12px;
+}
