@@ -15,3 +15,30 @@ padding-left: 35px;
   padding-right: 7px;
   padding-top: 12px;
 }
+
+@media only screen and (max-width: 768px) {
+	.small-width{
+    width: max-content;
+  }
+
+  .header-custom{
+    font-family: 'Press Start 2P', cursive;
+    padding-left: 10px;
+    color: white;
+    padding-top: 4px;
+    padding-bottom: 1px ;
+    padding-right: 20px;
+    font-size: 18px;
+
+  }
+
+  .headertext{
+    color: white;
+    float: right;
+    padding-right: 7px;
+    padding-top: 12px;
+    padding-left: 100px;
+  }
+
+}
+

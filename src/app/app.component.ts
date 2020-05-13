@@ -13,8 +13,7 @@ export class AppComponent implements OnInit {
   chatData = [];
   connectionId: string;
   name: string;
-  exception : string;
-
+  exception = false;
 
   constructor(private chatservice: ChatService) {}
 
@@ -31,16 +30,15 @@ export class AppComponent implements OnInit {
       }
     }, 1000);
   }
-  chat(event) {
-    console.log(event);
-  }
+
   sendMessage() {
+    this.exception = false;
+
     if (this.chatId) {
       const payload = {
         uniqueCodeUrl: this.chatId,
         lastcontent: this.chatContent,
         name: this.name,
-
       };
 
       this.chatservice.putChatData(payload).subscribe((res: any) => {
@@ -63,21 +61,27 @@ export class AppComponent implements OnInit {
   startChat(id) {
     this.chatId = id;
     if (this.chatId) {
-      this.chatservice.getChatData(this.chatId).subscribe((res: any) => {
-        this.chatId = res.uniqueCodeUrl;
-        this.chatData = [...res.contentList];
-      },(error) => {
-        console.log(error);
-        this.exception = error.message;
-      });
+      this.chatservice.getChatData(this.chatId).subscribe(
+        (res: any) => {
+          this.chatId = res.uniqueCodeUrl;
+          this.chatData = [...res.contentList];
+        },
+        (error) => {
+          this.exception = true;
+          this.chatId = null;
+
+        }
+      );
     }
   }
 
-  setName(name){
-this.name = name;
+  setName(name) {
+    this.exception = false;
+    this.name = name;
   }
 
   endChat() {
+    this.exception = false;
     this.chatId = null;
     this.chatData = [];
     this.chatContent = "";

@@ -140,7 +140,7 @@ input:focus, textarea:focus {
 }
 
 
-@media only screen and (max-width: 580px) {
+@media only screen and (max-width: 768px) {
 	#form-div{
 		left: 3%;
 		margin-right: 3%;
@@ -148,5 +148,6 @@ input:focus, textarea:focus {
 		margin-left: 0;
 		padding-left: 3%;
 		padding-right: 3%;
-	}
+  }
+
 }

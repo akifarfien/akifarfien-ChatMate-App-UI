@@ -14,7 +14,12 @@
         <input placeholder="Enter your message" class="form-control" type="text" [(ngModel)]="chatContent" [ngModelOptions]="{standalone: true}">
       </div>
       <div class="form-group">
+        <div *ngIf="!name">
+          <button class="btn btn-info" type="submit" disabled>SEND</button>
+        </div>
+        <div *ngIf="name">
         <button class="btn btn-info" type="submit" (click)="sendMessage()">SEND</button>
+      </div>
       </div>
     </div>
   </div>
@@ -27,13 +32,17 @@
     </div>
     <div class="container">
       <div class="form-group row align ">
+        <div>
       <span style="color: black;" *ngIf="chatId" class="size connectionIdFont"> <b>Connection ID  : {{chatId}}</b></span>
+        </div>
       <button class="btn btn-success" *ngIf="chatId" (click)="endChat()">End Chat</button>
+      <div *ngIf="exception">
+        <span style="color: red;" class="size"> Sorry,ID is not valid </span>
+      </div>
     </div>
+
     </div>
-    <div *ngIf="exception">
-      <span style="color: red;" class="size"> {{exception}}</span>
-    </div>
+
     <div *ngIf="!name" class="container">
       <div class="form-group row align">
       <input type="text" class="form-control size" placeholder="Enter your Name" #inputidName>
@@ -46,42 +55,13 @@
         <li class="list-group-item"><h4>HOW TO</h4></li>
 
 
-        <li class="list-group-item list-group-item-success">*  Choose Your Name !!important</li>
-        <li class="list-group-item list-group-item-success">*  Start texting and you will generete a unit ID</li>
-        <li class="list-group-item list-group-item-success">*  Share that ID to ADD Friends on the chat </li>
-        <li class="list-group-item list-group-item-success">*  If you already have a ID. Paste it in "Enter you ID" box</li>
-        <li class="list-group-item list-group-item-success">*<b>  All Ideal chats will be deleted after 15 minutes Automatically</b></li>
+        <li class="list-group-item list-group-item-success">*  Choose Your Name - important</li>
+        <li class="list-group-item list-group-item-success">*  Start texting and you will generate a unique ID</li>
+        <li class="list-group-item list-group-item-success">*  Share that ID to Add Friends on the chat </li>
+        <li class="list-group-item list-group-item-success">*  If you already have a ID. Paste it in "Enter chat ID" box</li>
+        <li class="list-group-item list-group-item-success">*<b>  All inactive chats will be deleted after 15 minutes. Automatically</b></li>
 
       </ul>
     </div>
 
 </div>
-
-
-
-
-
-
-
-<!-- <div>
-  <div id="form-div">
-    <form class="form" id="form1">
-      <div *ngIf="!chatId">
-        <input type="text" class="form-control" placeholder="Enter chat id" #inputid>
-        <button class="btn btn-success" (click)="startChat(inputid.value)">Start Chat</button>
-      </div>
-      <span style="color: white;" *ngIf="chatId"> connectionId : {{chatId}}</span>
-      <button *ngIf="chatId" (click)="endChat()">End Chat</button>
-      <div class="text">
-        <div class="feedback-input">
-          <p *ngFor="let chat of chatData">{{chat}}</p>
-        </div>
-      </div>
-
-      <div class="submit">
-        <input id="input-box" class="form-control" type="text" [(ngModel)]="chatContent" [ngModelOptions]="{standalone: true}">
-        <button class="btn btn-danger" type="submit" id="button-blue" (click)="sendMessage()">SEND</button>
-        <div class="ease"></div>
-      </div>
-    </form>
-  </div> -->
